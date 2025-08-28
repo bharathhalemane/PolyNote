@@ -4,10 +4,12 @@ import debounce from "lodash/debounce";
 import './CodeCell.css'
 import { useCallback } from "react";
 
-const CodeCell = ({ cell }) => {
+import Note from '../Note/Note.jsx'
+
+const CodeCell = ({id, onDelete, cell  }) => {
     const [title, setTitle] = useState();
-    const [code, setCode] = useState(cell.code);
-    const [lang, setLang] = useState(cell.lang);
+    const [code, setCode] = useState(cell?.code || "");
+    const [lang, setLang] = useState(cell?.lang || "javascript");
     const [output, setOutput] = useState("Waiting for code...");
 
     const runCode = async (latestCode = code, latestLang = lang) => {
@@ -32,7 +34,7 @@ const CodeCell = ({ cell }) => {
     );
 
     const handleEditorChange = (value) => {
-        setCode(value);
+        setCode(value || "");
         debouncedRun(value, lang);
     };
 
@@ -43,6 +45,7 @@ const CodeCell = ({ cell }) => {
 
     return (
         <div className="code">
+
             {/* Title Input */}
             <input className="cell-title" 
             value={title}
@@ -50,7 +53,7 @@ const CodeCell = ({ cell }) => {
                 placeholder="Enter Title" />
             
              <div className="body">
-            
+            <div>
             {/* Language Selector */}
             <select value={lang} onChange={(e) => handleLangChange(e.target.value)}>
                 <option value="javascript">JavaScript</option>
@@ -59,18 +62,22 @@ const CodeCell = ({ cell }) => {
                 <option value="c">C</option>
                 <option value="cpp">C++</option>
             </select>
-
+                
+                 {/* Delete Button*/}
+            <button className="delete-btn" onClick={() => {onDelete(id)}}>❌</button>
+            </div>
             {/* Monaco Editor */}
             <Editor height="200px"
                 width="auto"
 
-                defaultLanguage={lang}
-                language={lang === "javascript" ? "javascript" :
-                    lang === "java" ? "java" :
-                        lang === "python" ? "python" :
-                            lang === "c" ? "c" : "cpp"
-                }
-                value={code}
+                // defaultLanguage={lang}
+                // language={lang === "javascript" ? "javascript" :
+                //     lang === "java" ? "java" :
+                //         lang === "python" ? "python" :
+                //             lang === "c" ? "c" : "cpp"
+                // }
+                    language={lang}
+                value={code || ""}
                 theme="vs-dark"
                 onChange={handleEditorChange}
                 options={{
@@ -82,12 +89,13 @@ const CodeCell = ({ cell }) => {
 
 
             {/* Run Button */}
-            <button onClick={runCode}>▶ Run</button>
+            <button className="run-btn" onClick={runCode}>▶ Run</button>
 
             {/* Output */}
             <pre>
                 {output}
-            </pre>
+                </pre>
+                <Note/>
         </div>
             
         </div>

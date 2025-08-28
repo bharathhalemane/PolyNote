@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "frontend",
+			"path": "../../PolyNote/frontend"
+		},
+		{
+			"name": "backend",
+			"path": "../../PolyNote/backend"
+		},
+		{
+			"name": "PolyNote",
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#2E1F6E",
+			"titleBar.activeBackground": "#402B99",
+			"titleBar.activeForeground": "#FBFAFE"
+		}
+	}
+}
