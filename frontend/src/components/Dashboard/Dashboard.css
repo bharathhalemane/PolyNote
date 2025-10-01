@@ -1,0 +1,16 @@
+
+.home{
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;  
+}
+
+.home h1{
+  position: relative;
+  text-align: center;
+}
+
+.home .codecell{  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+

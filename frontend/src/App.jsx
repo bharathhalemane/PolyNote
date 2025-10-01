@@ -1,25 +1,21 @@
-import { useState } from 'react'
-import CodeCell from "../components/CodeCell/CodeCell.jsx";
-import './App.css'
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Dashboard from "./pages/Home/Home.jsx";
 
 function App() {
-  const [cells, setCells] = useState([{ id: 1, lang: "javascript", code: "", output: "" }]);
-
-  const addCell = () => {
-    setCells([...cells, { id: Date.now(), lang: "javascript", code: "", output: "" }]);
-  };
-
   return (
-    <div className='home'>
-      <h1>⚡ PolyNote</h1>
-      <div className='codecell'>
-        {cells.map((cell) => (
-          <CodeCell key={cell.id} cell={cell} />
-        ))}
-      </div>
-      <button onClick={addCell} style={{ marginTop: "10px" }}> ➕ Add Cell</button>
+    <div>
+      {/* <nav>
+        <Link to="/signup">Signup</Link> |{" "}
+        <Link to="/login">Login</Link> |{" "}
+        <Link to="/dashboard">Dashboard</Link>
+      </nav> */}
+
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
 
-export default App
+export default App;

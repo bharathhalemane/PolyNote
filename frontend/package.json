@@ -11,9 +11,16 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "firebase": "^12.2.1",
     "lodash": "^4.17.21",
+    "monaco-editor": "^0.52.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-firebase-hooks": "^5.1.1",
+    "react-router-dom": "^7.8.2",
+    "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
